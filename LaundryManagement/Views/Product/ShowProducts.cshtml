@@ -1,0 +1,232 @@
+﻿@model LaundryManagement.Models.ProductModel
+@{
+    ViewBag.Title = "ShowProducts";
+}
+
+<h2>ShowProducts</h2>
+
+
+
+
+
+
+
+<div class="">
+    <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Washing</th>
+                <th>Drying</th>
+                <th>Ironing</th>
+                <th>Total</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var products in ViewBag.MyProduct)
+            {
+                <tr>
+                    <td for="Check_@products.ProductId">@products.ProductName</td>
+                    <td>
+                        <input id="txt_@products.ProductId" type="text" style="width:45px;" class="txtCal" />
+                        <a id="@products.ProductWashPrice" style="color:red;margin-left:85px;" onclick="aclickFun(event)">@products.ProductWashPrice</a>
+                        <a id="@products.ProductDryPrice" style="color:red;margin-left:85px;" onclick="aclickFun(event)">@products.ProductDryPrice</a>
+                        <a id="@products.ProductIronPrice" style="color:red;margin-left:85px;" onclick="aclickFun(event)">@products.ProductIronPrice</a>
+
+                        <input id="txtSum_@products.ProductId" type="text" style="width:45px;" />
+                    </td>
+                </tr>
+
+            }
+
+
+        <tbody>
+
+    </table>
+    <div>
+        <input type="button" id="add" value="Add" />
+
+    </div>
+    <div>
+        <input type="button" id="show" value="Show" onclick="display_array();" />
+
+    </div>
+    <div>
+        @*<input type="button" id="txtData" value="Data" onclick="getAllData();" />*@
+        <input type="button" id="txtData" value="Data" />
+
+    </div>
+
+    <div id="Result">
+        <h2>My Selected Services</h2>
+
+    </div>
+
+    @*<p>Hide</p>
+        <input type="checkbox" id="isAgeSelected" />
+        <input type="checkbox" value="1" name="checkMeOut" id="checkMeOut" checked="checked" />
+        <div id="txtAge">
+            Age is selected
+        </div>*@
+
+
+</div>
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+</script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js">
+</script>
+<script>
+
+    
+    //alert(event.target);
+    $(document).ready(function () {
+        //alert(event.target);
+        $("itemList").on('input', '.txtCal', function () {
+            var getValues = $(this).val();
+            alert(getValues);
+        });
+    });
+
+    $(document).ready(function () {
+        $("#txtData").click(function () {
+            $("input[type='text']").each(function () {
+                alert($(this).val());
+            })
+        });
+    });
+    function getAllData(e) {
+        var allData;
+        //allData = document.getElementById(e.target.id).innerText;
+        allData = $(e.target.id).val();
+        // alert(allData);
+    }
+
+
+    var elements = Array();
+    var index = 0;
+
+    function aclickFun(e) {
+
+        var values = "";
+        $("input[type='text']").each(function () {
+            //values += $(this).val() + ":" + e.target.id;
+            //alert($(this).val());
+            values += $(this).val();
+        });
+
+        //var val = e.target.id * values;
+        alert(e.target.id);
+        alert(values + "");
+        //var text_val = $("input[type='text']").val();
+        //alert(values);
+
+        //document.getElementById
+        //document.getElementById("Result").innerHTML = e;
+        alert(e.target.id + " Clicked");
+
+        //elements[index] = $(this);
+        elements[index] = e.target.id;
+
+        index++;
+        //$(elements).each(function (index, value) {
+        //    alert(index + ":" + value);
+
+        //});
+        //$.each(elements, function (index, value) {
+        //    alert(index + ":" + value);
+        //});
+
+    }
+
+    function display_array() {
+        alert("show clicked");
+        var e = "<hr/>";
+        for (var y = 0; y < elements.length; y++) {
+            e += elements[y] + "<br/>";
+        }
+        document.getElementById("Result").innerHTML = e;
+        //elements = "";
+    }
+
+    //function aclickFun(e) {
+    //    alert(e.target.id+" Clicked");
+    //}
+
+    //$("#a_1").on('click', function () {
+    //    alert("inside a clicked");
+    //    window.location = "http://www.google.com";
+    //});
+
+
+    //$("#add").click(function () {
+    //    if ($("#checkMeOut").prop('checked')) {
+    //        alert("Checked Boxed");
+    //    } else {
+    //        alert("Checked unBoxed");
+    //    }
+    //});
+
+    //$("#add").click(function () {
+
+
+    //    elements[index] = document.getElementById(;
+    //        index++;
+    //    });
+
+
+    //$("#checkMeOut").change(function () {
+    //    if ($(this).prop('checked')) {
+    //        alert("Checked Box Selected");
+    //    } else {
+    //        alert("Checked Box deselect");
+    //    }
+    //});
+
+
+
+
+    //if ($('#checkMeOut').prop('checked')) {
+    //    // something when checked
+    //    $("p").show();
+    //} else {
+    //    // something else when not
+    //    $("p").hide();
+    //}
+
+    //    $(document).ready(function () {
+    //        $("p").click(function () {
+    //            $(this).hide();
+    //        });
+    //    });
+
+    //$(document).ready(function () {
+    //    $("#add").click(function () {
+    //        $("p").hide();
+    //    });
+    //});
+
+    //$(document).ready(function () {
+    //    if (document.getElementById('isAgeSelected').checked) {
+    //        $("#txtAge").show();
+    //    }
+    //});
+
+    //if ($("#isAgeSelected").is(':checked'))
+    //    $("#txtAge").hide();  // checked
+    //else
+    //    $("#txtAge").show();  // unchecked
+
+</script>
+
+
+
+

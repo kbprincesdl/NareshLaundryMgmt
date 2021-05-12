@@ -1,0 +1,160 @@
+﻿
+
+<h2>Add Products</h2>
+
+<div>
+    <form action="~/Product/AddProducts" method="post">
+
+
+        <table class="table-bordered table-condensed">
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Description</th>
+
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="text" name="ProductName" value="" class="form-control" /><br />
+                    
+                </td>
+                <td>
+                    <input type="text" name="ProductPrice" value="" class="form-control" /><br />
+
+                    
+                </td>
+
+
+
+
+                @*<td>
+                    <input type="text" name="ProductDesc" value="@Model.ProductDesc" class="form-control" /><br />
+
+                  
+                </td>*@
+                <td>
+                    <input type="submit" class="btn btn-primary" value="Save" />
+                   
+                </td>
+            </tr>
+            <hr/>
+            <tr>
+                <td>
+                    <span>Drying</span>
+                    <input id="Checkbox1" type="checkbox" />
+                </td>
+                <td>
+                    <span>Washing</span>
+                    <input id="Checkbox2" type="checkbox" />
+                </td>
+                <td>
+                    <span>Ironing</span>
+                    <input id="Checkbox3" type="checkbox" />
+                </td>
+                <td>
+                    <span>New</span>
+                    <input checked="checked"
+                           id="isActive"
+                           name="isActive"
+                           type="checkbox"
+                           value="false" />
+                </td>
+                
+
+
+            </tr>
+
+        </table>
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Washing</th>
+                <th>Drying</th>
+                <th>Ironing</th>
+            </tr>
+            <tr>
+                <td>
+                    <span>Shirt</span>
+                    <input checked="checked"
+                           id="ChkWash"
+                           name="isActive"
+                           type="checkbox"
+                           value="false" />
+                </td>
+                <td>
+
+                    <input checked="checked"
+                           id="ChkDry"
+                           name="isActive"
+                           type="checkbox"
+                           value="false" />
+                </td>
+                <td>
+
+                    <input checked="checked"
+                           id="ChkIron"
+                           name="isActive"
+                           type="checkbox"
+                           value="false" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span>Shirt</span>
+                    <input checked="checked"
+                           id="ChkWash2"
+                           name="isActive"
+                           type="checkbox"
+                           value="false" />
+                </td>
+                <td>
+
+                    <input checked="checked"
+                           id="ChkDry2"
+                           name="isActive"
+                           type="checkbox"
+                           value="false" />
+                </td>
+                <td>
+
+                    <input checked="checked"
+                           id="ChkIron2"
+                           name="isActive"
+                           type="checkbox"
+                           value="false" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span>Shirt</span>
+                    <input checked="checked"
+                           id="ChkWash3"
+                           name="isActive"
+                           type="checkbox"
+                           value="false" />
+                </td>
+                <td>
+
+                    <input checked="checked"
+                           id="ChkDry3"
+                           name="isActive"
+                           type="checkbox"
+                           value="false" />
+                </td>
+                <td>
+
+                    <input checked="checked"
+                           id="ChkIron3"
+                           name="isActive"
+                           type="checkbox"
+                           value="false" />
+                </td>
+
+            </tr>
+        </table>
+    </form>
+</div>
+

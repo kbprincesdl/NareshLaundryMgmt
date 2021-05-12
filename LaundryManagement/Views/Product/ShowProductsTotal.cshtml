@@ -1,0 +1,186 @@
+﻿
+@{
+    ViewBag.Title = "ShowProductsTotal";
+}
+
+<h2>ShowProductsTotal</h2>
+
+
+<table id="sum_table" width="300" border="1">
+    <thead>
+        <tr>
+            <th>Apple</th>
+            <th>Orange</th>
+            <th>Watermelon</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        <tr>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total:</td>
+            <td>Total:</td>
+            <td>Total:</td>
+        </tr>
+    </tfoot>
+
+
+</table>
+<input type="text" id="Text1">
+<input type="text" id="Text2">
+<input type="text" id="Text3">
+<input id="get_button" type="submit" value="Get the Total" onclick="getData()" />
+
+
+
+@*<div id="main">
+        <table>
+            <tbody>
+                <tr>
+                    <th>Digit1</th>
+                    <th>Operator</th>
+                    <th>Digit2</th>
+                    <th>Equals</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td>50</td>
+                    <td>+</td>
+                    <td>40</td>
+                    <td>=</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>+</td>
+                    <td>50</td>
+                    <td>=</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>+</td>
+                    <td>40</td>
+                    <td>=</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>*@
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+</script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js">
+</script>
+
+<script>
+
+    //$('#main tr').each(function (i) {
+    //    if (i == 0) return true;
+    //    var tr = $(this);
+    //    var num1 = parseInt($('td', tr).eq(0).text());
+    //    var num2 = parseInt($('td', tr).eq(2).text());
+    //    $('td', tr).eq(4).text(num1 + num2);
+    //});
+
+
+    //$(document).ready(function () {
+    //    //alert(event.target);
+    //    $("tblPrd").on('input', '.qty', function () {
+    //        var getValues = $(this).val();
+    //        alert(getValues);
+    //    });
+    //});
+
+    //$('#tblPrd tr').each(function (i) {
+    //    if (i == 0) return true;
+    //    var tr = $(this);
+    //    var num3 = parseInt($('td', tr).eq(1).text());
+    //    var num4 = parseInt($('td', tr).eq(2).text());
+    //    $('td', tr).eq(3).text(num3 + num4);
+    //});
+
+    //function changeFun(e) {
+
+    //    var values = "";
+    //    $('#tblPrd tr').each(function (i) {
+    //        if (i == 0) return true;
+    //        //values += $(this).val() + ":" + e.target.id;
+    //        //alert($(this).val());
+    //        alert($('td', tr).eq(1).text());
+    //        alert($('td', tr).eq(2).text());
+
+    //        var tr = $(this);
+    //        var num3 = $('td', tr).eq(1).text();
+    //        var num4 = $('td', tr).eq(2).text();
+
+    //        //alert(num3);
+    //       // document.getElementById("subto").innerText = num3 + num4;
+    //        //$('td', tr).eq(2).text(num3 + num4);
+    //       // values += $(this).val();
+    //    });
+
+    //    //var val = e.target.id * values;
+    //   // alert(e.target.id);
+    //}
+
+    $(document).ready(function () {
+        $('table thead th').each(function (i) {
+           // alert(i);
+            calculateColumn(i);
+
+        });
+    });
+
+    function calculateColumn(index) {
+        var total = 0;
+        $('table tr').each(function () {
+           
+               // alert($('td', this).eq(index).text());
+                var value = parseInt($('td', this).eq(index).text());
+                if (!isNaN(value)) {
+                    total += value;
+                }
+            
+        });
+        $('table tfoot td').eq(index).text('Total: ' + total);
+    };
+
+
+
+    function getData(){
+        //var data = $("Text1").text();
+        //alert(data);
+        $('table thead th').each(function (i) {
+            alert(i);
+            calculateColumn(i);
+            var str = $("#Text3").val();
+            alert(str);
+        });
+
+    };
+</script>

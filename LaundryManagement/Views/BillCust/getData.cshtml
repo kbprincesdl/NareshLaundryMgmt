@@ -1,0 +1,89 @@
+﻿@model IEnumerable<LaundryManagement.Models.BillCustModel>
+@{
+    ViewBag.Title = "getBillCustInfo";
+}
+
+<h2>getBillCustInfo</h2>    
+
+<h2>Billing Customer Information </h2>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https: //cdn.datatables.net/1.10.24/js/dataTables.bootstrap.min.js"></script>
+
+<div class="table-responsive">
+    <table id="tblBillCustList" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+        <thead>
+
+
+            <tr>
+                <th>
+                    @Html.CheckBox("chkbox", new { @value = "1" })
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BillingId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustMobileNumber)
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.CheckBox("chkbox")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BillingId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CustId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CustName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CustMobileNumber)
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+<script>
+
+    $(document).ready(function () {
+        $('#tblBillCustList').DataTable({
+            "scrollY": "150px",
+            "scrollCollapse": true,
+            "paging": false,
+            "columnDefs": [
+                {
+                    "targets": [2],
+                    "visible": false,
+                    "searchable": false
+                }
+
+            ]
+        });
+    });
+</script>

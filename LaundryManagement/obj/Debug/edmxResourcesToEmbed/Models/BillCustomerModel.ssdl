@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LaundryManagmentSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Billing">
+    <Key>
+      <PropertyRef Name="BillingId" />
+    </Key>
+    <Property Name="BillingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="Products" Type="varchar" MaxLength="100" />
+    <Property Name="BillDateTime" Type="datetime" />
+    <Property Name="TotalAmount" Type="float" />
+    <Property Name="PaidAmount" Type="float" />
+    <Property Name="DueAmount" Type="float" />
+    <Property Name="Discount" Type="float" Nullable="false" />
+    <Property Name="BillingStatus" Type="varchar" MaxLength="25" />
+    <Property Name="DeliveredDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdateBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_Customer">
+    <Key>
+      <PropertyRef Name="CustId" />
+    </Key>
+    <Property Name="CustId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustName" Type="varchar" MaxLength="100" />
+    <Property Name="CustMobileNumber" Type="varchar" MaxLength="20" />
+    <Property Name="CustEmailId" Type="varchar" MaxLength="50" />
+    <Property Name="CustEntryDate" Type="date" />
+    <Property Name="CustEntryTime" Type="time" Precision="7" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="LaundryManagmentSystemModelStoreContainer">
+    <EntitySet Name="tbl_Billing" EntityType="Self.tbl_Billing" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Customer" EntityType="Self.tbl_Customer" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

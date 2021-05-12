@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LaundryManagmentSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_Billing">
+    <Key>
+      <PropertyRef Name="BillingId" />
+    </Key>
+    <Property Name="BillingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" />
+    <Property Name="Products" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BillDateTime" Type="DateTime" Precision="3" />
+    <Property Name="TotalAmount" Type="Double" />
+    <Property Name="PaidAmount" Type="Double" />
+    <Property Name="DueAmount" Type="Double" />
+    <Property Name="Discount" Type="Double" Nullable="false" />
+    <Property Name="BillingStatus" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DeliveredDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int32" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_Customer">
+    <Key>
+      <PropertyRef Name="CustId" />
+    </Key>
+    <Property Name="CustId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustMobileNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CustEmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustEntryDate" Type="DateTime" Precision="0" />
+    <Property Name="CustEntryTime" Type="Time" Precision="7" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="LaundryManagmentSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Billing" EntityType="Self.tbl_Billing" />
+    <EntitySet Name="tbl_Customer" EntityType="Self.tbl_Customer" />
+  </EntityContainer>
+</Schema>
