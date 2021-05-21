@@ -22,7 +22,7 @@ namespace LaundryManagement.Controllers
             //return new Rotativa.ActionAsPdf("GetPrint");
         }
 
-
+        [HttpGet]
         public ActionResult GetPrint()
         {
             return View();
@@ -33,5 +33,18 @@ namespace LaundryManagement.Controllers
             return View(db.getBillCustDetails());
         }
 
+   
+        public ActionResult ShowPartial()
+        {
+            return View(db.getBillCustDetails());
+           
+        }
+
+        public string SaveEmployeeRecord()
+        {
+            string res = "this is return value";
+            // do here some operation  
+            return res;
+        }
     }
 }

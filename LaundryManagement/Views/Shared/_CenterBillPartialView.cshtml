@@ -1,0 +1,40 @@
+﻿@model LaundryManagement.Models.BillCustModel
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BillingId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustMobileNumber)
+        </th>
+        <th></th>
+    </tr>
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => Model.BillingId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CustId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CustName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CustMobileNumber)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+</table>

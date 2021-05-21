@@ -100,7 +100,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
+    <Content Include="Css\MyStyleSheet.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Laundry.JPG" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
     <Content Include="Rotativa\help-wkhtmltopdf.txt" />
     <Content Include="Rotativa\wkhtmltoimage.exe" />
@@ -135,6 +137,12 @@
     <Content Include="Views\BillCust\getBillCustInfo.cshtml" />
     <Content Include="Views\BillCust\GetPrint.cshtml" />
     <Content Include="Views\BillCust\getData.cshtml" />
+    <Content Include="Views\Shared\_BillPartialView.cshtml" />
+    <Content Include="Views\BillCust\ShowPartial.cshtml" />
+    <Content Include="Views\Shared\_LeftBillPartialView.cshtml" />
+    <Content Include="Views\Shared\_CenterBillPartialView.cshtml" />
+    <Content Include="Views\Shared\_RightBillPartialView.cshtml" />
+    <Content Include="Views\Shared\_LeftBillPartialView - Copy.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

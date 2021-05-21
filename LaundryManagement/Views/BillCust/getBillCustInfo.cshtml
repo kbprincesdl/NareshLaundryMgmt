@@ -2,10 +2,12 @@
 @{
     ViewBag.Title = "getBillCustInfo";
     bool chkVal = false;
+
+    ViewBag.dateToday= DateTime.Now.ToString("HH:mm:ss");
+    ViewBag.ShortDateToday=DateTime.Now.ToShortDateString();
 }
 
 
-<h2>Billing Customer Information </h2>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -14,79 +16,260 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-<script src="https: //cdn.datatables.net/1.10.24/js/dataTables.bootstrap.min.js"></script>
-
-<div class="table-responsive">
-    <table id="tblBillCustList" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-        <thead>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap.min.js"></script>
+<link href="~/Css/MyStyleSheet.css" rel="stylesheet" />
 
 
-            <tr>
-                <th>
-                    @Html.CheckBox("chkbox", chkVal, new { @value = "1" })@Html.DisplayName("Select")
-                </th>
-                <th>
-                    @Html.DisplayName("Bill")
-                </th>
-                <th>
-                    @Html.DisplayName("Cust ID")
-                </th>
-                <th>
-                    @Html.DisplayName("Name")
-                </th>
-                <th>
-                    @Html.DisplayName("Mobile Number")
-                </th>
+<div class="row">
+    <div class="column">
+        <div class="card" style="width:520px;height:580px">
+            <h2>Laundry Management System </h2>
+            <table id="tblBillCustList" class="table table-striped table-bordered table-sm" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th> 
+                            @Html.DisplayName("Select")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Bill")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Cust ID")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Name")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Mobile Number")
+                        </th>
 
 
-            </tr>
+                    </tr>
 
-        </thead>
-        <tbody>
-
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.CheckBox("chkbox", chkVal)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BillingId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CustId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CustName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CustMobileNumber)
-                    </td>
-
-                </tr>
+                </thead>
+                <tbody>
 
 
-            }
-        </tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.CheckBox("chkbox", chkVal)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BillingId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CustId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CustName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CustMobileNumber)
+                            </td>
 
-    </table>
-    <div>
-        <input type="button" class="btn btn-info" value="Save">
-        <input type="button" class="btn btn-info" value="Print">
-        <a href="javascript:window.print()">Click to Print This Page</a>
+                        </tr>
+
+
+                    }
+                </tbody>
+
+            </table>
+        </div>
     </div>
 
+    <div class="column">
+        <div class="card">
+            <div>
+                <table>
+                    <thead>
 
-    <div class="line-btn">
-        <input type="submit" value="print" onclick="PrintOnlyTable()" class="btn fl btn-print">
+
+                        <tr>
+                            <th>
+                              
+                                <label id="bill">Bill No</label>
+                                <input type="text" id="billNo" name="Bill No" onchange="myFunction()">
+                            </th>
+                            <th>
+                                
+                                <label id="lbMobNo">Mobile</label>
+                                <input type="text" id="MobNo" name="Mobile">
+
+                            </th>
+
+                            <th>
+
+                                <label id="lbName">Name</label>
+                                <input type="text" id="txtName" name="Name">
+                               
+                            </th>
+                            <th>
+                                @*<input type="text" id="todate1" onload="myDate()">*@
+                                @*<p id="demo"></p>*@
+
+                                <input type="text" id="todate1" value="@ViewBag.ShortDateToday" style="width:80px" readonly>
+                                <input type="text" id="todate2" value="@ViewBag.dateToday" style="width:70px" readonly>
+                               
+
+                            </th>
+
+
+                        </tr>
+
+                    </thead>
+
+
+                </table>
+            </div>
+        </div>
     </div>
 
-    <input type="button" onclick="CallPrint('tblBillCustList')" value="Print Portion" />
+    <div class="column">
+        <div class="card"  style="height:500px">
+            <div>
+                <table id="tblBillCustList1" class="table table-striped table-bordered table-sm" cellspacing="0" >
+                    <thead style="background-color:#ffd800">
 
-    <input type="button" onclick="javascript:window.print()" value="Print Current Page" />
+
+                        <tr>
+
+                            <th>
+                                @Html.DisplayName("Product")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Qty")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Rate")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Amount")
+                            </th>
+
+
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BillingId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustMobileNumber)
+                                </td>
+
+                            </tr>
+
+
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card"  style="height:500px">
+            <div>
+                <table id="tblBillCustList2" class="table table-striped table-bordered table-sm" cellspacing="0">
+                    <thead style="background-color:#ffd800">
+
+
+                        <tr>
+                            <th>
+                                @Html.DisplayName("Select")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Bill")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Cust ID")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Name")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Mobile Number")
+                            </th>
+
+
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.CheckBox("chkbox", chkVal)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BillingId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustMobileNumber)
+                                </td>
+
+                            </tr>
+
+
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
 
 </div>
+
+
+
+
+@using (Html.BeginForm("GetPrint", "BillCust", FormMethod.Get))
+{
+    // do your html
+
+    <div>
+        <input type="submit" class="btn btn-info" value="Save" style="background-color:#ffd800">
+        <input type="submit" class="btn btn-info" value="Print" style="background-color:#0094ff">
+        <a href="javascript:window.print()">Click to Print This Page</a>
+    </div>
+}
+
+
+
+@*<div class="line-btn">
+            <input type="submit" value="print" onclick="PrintOnlyTable()" class="btn fl btn-print">
+        </div>
+
+        <input type="button" onclick="CallPrint('tblBillCustList')" value="Print Portion" />
+
+        <input type="button" onclick="javascript:window.print()" value="Print Current Page" />
+
+    </div>*@
 <script>
 
     //$(document).ready(function () {
@@ -94,30 +277,80 @@
     //    $('.dataTables_length').addClass('bs-select');
     //});
 
+    //$.get("/BillCust/SaveEmployeeRecord", null, function (data) {
+    //    alert(data);
+    //});
+
     $(document).ready(function () {
         $('#tblBillCustList').DataTable({
-            "scrollY": "150px",
+            "scrollY": "250px",
+
             "scrollCollapse": true,
-            "paging": false,
+            "paging": true,
+
             "columnDefs": [
                 {
-                    "targets": [2],
+
                     "visible": false,
-                    "searchable": false
+                    "searchable": false,
+                    "targets": [2]
                 }
+
+            ],
+            "columns": [
+                { "width": "20px" },
+                { "width": "30px" },
+                { "width": "20px" },
+                { "width": "20px" },
+                null
 
             ]
         });
     });
 
+    //$(document).ready(function () {
+    //    $('#billNo').click(function () {
+    //        var EditorText = $('#billNo').text();
+    //        if (EditorText != '') {
+    //            //Perform Your Actions
+    //        }
+    //        else {
+    //            // Write any user interactive validation message
+    //            alert('Kindly fill in some text in the editor');
+    //        }
+    //    })
+    //})
 
-        function PrintOnlyTable() {
-            var HTML = $("html");
-            var cln = document.documentElement.innerHTML;
-            HTML.html($("table"));
-            window.print();
-            document.documentElement.innerHTML = cln;
+    function myFunction() {
+
+        x = document.getElementById("billNo").value;
+
+       // var EditorText = $('#billNo').text();
+        if (x == " " || x == null) {
+            //Perform Your Actions
+            alert("Bill No cannot be blank");
             return false;
+        }
+        else if (isNaN(x) || x < 1) {
+            alert('Input not valid.it must be a number greater than 0');
+        }
+           
+    }
+   
+    var d = new Date();
+    document.getElementById("demo").innerHTML = dt;
+ 
+
+   
+
+   
+    function PrintOnlyTable() {
+        var HTML = $("html");
+        var cln = document.documentElement.innerHTML;
+        HTML.html($("table"));
+        window.print();
+        document.documentElement.innerHTML = cln;
+        return false;
     }
 
     function CallPrint(strid) {
@@ -127,7 +360,7 @@
         WinPrint.document.close();
         WinPrint.focus();
         WinPrint.print();
-        //WinPrint.close()   
+        //WinPrint.close()
     }
 
 </script>
